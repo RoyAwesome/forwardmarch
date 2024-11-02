@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://duyoaqovb7p6y"]
+
+[ext_resource type="Texture2D" uid="uid://bi5n1g2qurff2" path="res://icon.svg" id="1_ojwvd"]
+
+[node name="StatDisplay" type="HBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ojwvd")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "9999"
+fit_content = true
+autowrap_mode = 0
