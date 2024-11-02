@@ -45,14 +45,21 @@ layout_mode = 2
 
 [node name="Players" type="HBoxContainer" parent="UI/VBoxContainer/TopBar/Hbox"]
 layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="Group1" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
 layout_mode = 2
 size_flags_vertical = 4
 
+[node name="VSeparator" type="VSeparator" parent="UI/VBoxContainer/TopBar/Hbox/Players"]
+layout_mode = 2
+
 [node name="Group2" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
 layout_mode = 2
 size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="UI/VBoxContainer/TopBar/Hbox/Players"]
+layout_mode = 2
 
 [node name="Group3" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
 layout_mode = 2
@@ -63,7 +70,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[b][color=\"yellow\"]Direct Strike[/color][/b] [color=\"green]By Roy Awesome[/color]"
+text = "[center][b][color=\"yellow\"]Forward March[/color][/b] [color=\"green]By Roy Awesome[/color][/center]"
 fit_content = true
 autowrap_mode = 0
 
@@ -252,7 +259,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(454, 448)
+size = Vector2i(2, 2)
 size_2d_override_stretch = true
 render_target_update_mode = 0
 
