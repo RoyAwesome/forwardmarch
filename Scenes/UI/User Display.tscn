@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt7ex3w4yitj7"]
+[gd_scene load_steps=3 format=3 uid="uid://bt7ex3w4yitj7"]
 
+[ext_resource type="Script" path="res://Scenes/UI/user_display.gd" id="1_jbo2t"]
 [ext_resource type="Texture2D" uid="uid://bi5n1g2qurff2" path="res://icon.svg" id="1_rfv1w"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_jbo2t")
 
-[node name="PlayerLeft" type="TextureRect" parent="."]
+[node name="Player" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -14,15 +16,7 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("1_rfv1w")
 expand_mode = 1
 
-[node name="PlayerRight" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-texture = ExtResource("1_rfv1w")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Text" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
 text = "999"

@@ -8,6 +8,7 @@ var BaseValue = 0;
 var CurrentValue = 0;
 var CurrentLevel = 0;
 
+
 func _init(initial_value = -1, growth_per_level = -1):
 	if(initial_value >= 0 && InitialValue < 0):
 		InitialValue = initial_value

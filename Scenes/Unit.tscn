@@ -14,3 +14,5 @@ texture = ExtResource("2_j8im1")
 unique_name_in_owner = true
 avoidance_enabled = true
 radius = 70.0
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

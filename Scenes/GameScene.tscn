@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://fx8u7054ie0p"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.gd" id="1_7rsgr"]
-[ext_resource type="PackedScene" uid="uid://bt7ex3w4yitj7" path="res://Scenes/UI/User Display.tscn" id="1_k18c4"]
 [ext_resource type="PackedScene" uid="uid://duyoaqovb7p6y" path="res://Scenes/UI/StatDisplay.tscn" id="2_4hjdr"]
+[ext_resource type="PackedScene" uid="uid://bcc2s36entt5e" path="res://Scenes/UI/TeamDisplay.tscn" id="3_6alq6"]
 [ext_resource type="PackedScene" uid="uid://cjmvxb0ofsdim" path="res://Scenes/Battlefield.tscn" id="3_t3gjf"]
 [ext_resource type="PackedScene" uid="uid://b14md7g2o6yd8" path="res://Scenes/Minimap.tscn" id="4_nux57"]
 [ext_resource type="ButtonGroup" uid="uid://b0v22ksyy78aj" path="res://Scenes/UI/BoardButtons.tres" id="5_sevyo"]
@@ -47,23 +47,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="Group1" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
+[node name="Team1Display" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("3_6alq6")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
 
 [node name="VSeparator" type="VSeparator" parent="UI/VBoxContainer/TopBar/Hbox/Players"]
 layout_mode = 2
 
-[node name="Group2" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
+[node name="Team2Display" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("3_6alq6")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
-
-[node name="VSeparator2" type="VSeparator" parent="UI/VBoxContainer/TopBar/Hbox/Players"]
-layout_mode = 2
-
-[node name="Group3" parent="UI/VBoxContainer/TopBar/Hbox/Players" instance=ExtResource("1_k18c4")]
-layout_mode = 2
-size_flags_vertical = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/TopBar/Hbox"]
 layout_mode = 2
@@ -274,10 +267,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="WaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 10.0
+
 [connection signal="toggled" from="UI/VBoxContainer/MarginContainer/HBoxContainer/BoardPanelButton" to="." method="_on_board_panel_button_toggled"]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer6/BoardButton" to="." method="_on_board_button_toggled" binds= [0]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer/BaseButton" to="." method="_on_board_button_toggled" binds= [1]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer2/UnitsButton" to="." method="_on_board_button_toggled" binds= [2]]
-[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer3/UpgradeButton" to="." method="_on_board_button_toggled" binds= [3]]
-[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer4/ItemButton" to="." method="_on_board_button_toggled" binds= [4]]
-[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer5/ViewButton" to="." method="_on_board_button_toggled" binds= [5]]
+[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer3/UpgradeButton" to="." method="_on_board_button_toggled" binds= [4]]
+[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer4/ItemButton" to="." method="_on_board_button_toggled" binds= [5]]
+[connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer5/ViewButton" to="." method="_on_board_button_toggled" binds= [6]]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

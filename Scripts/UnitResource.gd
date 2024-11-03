@@ -15,6 +15,8 @@ const Attribute : Script = preload("Attribute.gd")
 @export var Agility : Attribute = Attribute.new(0, 0)
 @export var BaseStrength : Attribute = Attribute.new(0, 0)
 
+@export var MovementSpeed : Attribute = Attribute.new(10)
+
 @export var Sprite : Texture2D
 
 #Size of the unit in grid squares
