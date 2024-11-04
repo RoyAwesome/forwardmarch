@@ -23,3 +23,10 @@ func _physics_process(delta: float) -> void:
 	var motion : int = mov * CameraSpeed;
 	Camera.position.x += motion
 	Camera.position.x = clamp(Camera.position.x, 200, 4300)
+
+func create_wave(force : Force, wave : int, unit : Unit):
+	var WaveNode = Node2D.new()
+	WaveNode.name = "Wave %d Force %d" % [wave, force.PlayerID]
+	$WaveContainer.add_child(WaveNode)
+		
+	WaveNode.add_child(unit)

@@ -245,16 +245,17 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="BoardContainer" type="SubViewportContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/SubViewportContainer"]
+[node name="BoardView" type="SubViewport" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/BoardContainer"]
+unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(2, 2)
-size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
 custom_minimum_size = Vector2(90, 0)
@@ -271,6 +272,12 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 process_callback = 0
 wait_time = 10.0
+
+[node name="Boards" type="Node2D" parent="."]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
 
 [connection signal="toggled" from="UI/VBoxContainer/MarginContainer/HBoxContainer/BoardPanelButton" to="." method="_on_board_panel_button_toggled"]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer6/BoardButton" to="." method="_on_board_button_toggled" binds= [0]]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=4 uid="uid://cjmvxb0ofsdim"]
+[gd_scene load_steps=5 format=4 uid="uid://cjmvxb0ofsdim"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_g8in1"]
 [ext_resource type="TileSet" uid="uid://ch87f8m2g5iww" path="res://Tiles/LPCTerrain.tres" id="1_nlrx0"]
 [ext_resource type="Texture2D" uid="uid://bi5n1g2qurff2" path="res://icon.svg" id="2_yac5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uut10"]
+size = Vector2(426, 486)
 
 [node name="Battlefield" type="Node2D"]
 script = ExtResource("1_g8in1")
@@ -43,3 +46,12 @@ texture = ExtResource("2_yac5f")
 position = Vector2(2970, 350)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_yac5f")
+
+[node name="Team1SpawnZone" type="Area2D" parent="."]
+position = Vector2(95, 95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Team1SpawnZone"]
+position = Vector2(212, 240)
+shape = SubResource("RectangleShape2D_uut10")
+
+[node name="WaveContainer" type="Node2D" parent="."]

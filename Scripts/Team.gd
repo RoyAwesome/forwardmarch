@@ -3,6 +3,11 @@ extends Resource
 
 @export var Forces: Array[Force]
 
-func _init(in_forces : Array[int]) -> void:
-	for i in in_forces:
-		Forces.push_back(Force.new(i))
+enum UnitDirection { LEFT, RIGHT }
+var MarchDirection : UnitDirection = UnitDirection.RIGHT
+
+func _init(in_forces : Array[Force], direction : UnitDirection = UnitDirection.RIGHT) -> void:
+	for force : Force in in_forces:
+		force.OwningTeam = self
+		Forces.push_back(force)		
+	MarchDirection = direction

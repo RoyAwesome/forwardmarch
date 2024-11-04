@@ -7,9 +7,12 @@ const UnitResource = preload("res://Scripts/UnitResource.gd")
 
 @export var PixelsPerMovespeedUnit : float = 1
 
+var OwningForce : Force
+
 # Unit this is copied from
 var UnitTemplate : Unit
 var UnitType : UnitResource;
+
 
 func init_from_template(unit : Unit):
 	UnitTemplate = unit
@@ -17,17 +20,19 @@ func init_from_template(unit : Unit):
 
 func set_unit(unit : UnitResource):
 	UnitType = unit
-	if(unit.Sprite):
-		MainSprite.texture = unit.Sprite
-	if(unit.UnitSize >= 1):
-		NavAgent.radius = 70 * unit.UnitSize
+	if(is_node_ready()):
+		if(unit.Sprite):
+			MainSprite.texture = unit.Sprite
+		if(unit.UnitSize >= 1):
+			NavAgent.radius = 70 * unit.UnitSize
 
 func set_movement_target(position: Vector2):
 	NavAgent.set_target_position(position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if(UnitType):
+		set_unit(UnitType)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
