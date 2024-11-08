@@ -245,17 +245,12 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="BoardContainer" type="SubViewportContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="BoardView" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-stretch = true
-
-[node name="BoardView" type="SubViewport" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/BoardContainer"]
-unique_name_in_owner = true
-handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 4
+size_flags_horizontal = 0
+expand_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
 custom_minimum_size = Vector2(90, 0)
@@ -286,4 +281,5 @@ position = Vector2(576, 324)
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer3/UpgradeButton" to="." method="_on_board_button_toggled" binds= [4]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer4/ItemButton" to="." method="_on_board_button_toggled" binds= [5]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer5/ViewButton" to="." method="_on_board_button_toggled" binds= [6]]
+[connection signal="gui_input" from="BoardPanel/HBoxContainer/Container/HBoxContainer/BoardView" to="." method="_on_board_view_gui_input"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

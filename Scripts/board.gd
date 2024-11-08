@@ -3,12 +3,11 @@ extends Node2D
 
 var OwningForce : Force
 
+@onready var Camera : Camera2D = $Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Camera2D.make_current()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+	print("board sees " + event.as_text())

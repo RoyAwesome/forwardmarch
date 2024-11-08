@@ -17,8 +17,12 @@ var Team2 : Team
 var WaveQueue : Array[Wave]
 
 var TeamDisplays : Array[TeamDisplay]
+var AllForces : Array[Force]
 
 var LocalPlayer : int = 0
+
+var CurrentPlayerBoard : Board
+var CurrentViewedBoard : Board
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,9 +44,13 @@ func _ready() -> void:
 	
 	WaveTimer.start()
 	
+	AllForces[LocalPlayer].OwningBoard.ready.connect(func (): 
+		view_board(AllForces[LocalPlayer].OwningBoard))
+	
 
 func create_player_force(player_id : int) -> Force:
 	var force : Force = Force.new(player_id, null)
+	AllForces.insert(player_id, force)
 	# create a board for the player
 	var viewport = SubViewport.new()
 	viewport.name = "Player %d" % player_id
@@ -53,11 +61,10 @@ func create_player_force(player_id : int) -> Force:
 	viewport.add_child.call_deferred(PlayerBoard)
 	
 	if(player_id == LocalPlayer):
-		PlayerBoard.tree_entered.connect(func():
-			%BoardView.world_2d = PlayerBoard.get_world_2d()
-			)
+		CurrentPlayerBoard = PlayerBoard
 	get_tree().root.add_child.call_deferred(viewport)
 	
+	force.OwningBoard = PlayerBoard
 	return force
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -99,3 +106,17 @@ func _on_wave_timer_timeout() -> void:
 	var NewWave : Wave = Wave.new(Team1.Forces[CurrentWave % Team1.Forces.size()], Team2.Forces[CurrentWave % Team2.Forces.size()])
 	WaveQueue.push_back(NewWave)	
 	CurrentWave += 1
+
+func view_board(board : Board) -> void:
+	if(!board.is_node_ready()):
+		return
+	var parent_viewport = board.get_parent() as Viewport
+	if(parent_viewport):
+		%BoardView.texture = parent_viewport.get_texture()
+		CurrentViewedBoard = board
+
+func _on_board_view_gui_input(event: InputEvent) -> void:
+	if(CurrentViewedBoard):
+		var parent_viewport = CurrentViewedBoard.get_parent() as Viewport
+		if(parent_viewport):
+			parent_viewport.push_input(event)
