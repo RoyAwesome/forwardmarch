@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://bms066wiojd00"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_l3blg"]
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_xqe5o"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_fou4g"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_tp0kl"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_86j1i"]
+
+[sub_resource type="Resource" id="Resource_nk7nw"]
+script = ExtResource("1_xqe5o")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_41efx"]
+script = ExtResource("1_xqe5o")
+InitialValue = 600.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_d3ra2"]
+script = ExtResource("1_xqe5o")
+InitialValue = 1.3
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_jshaw"]
+script = ExtResource("1_xqe5o")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_wq16j"]
+script = ExtResource("1_xqe5o")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_8rmeu"]
+script = ExtResource("1_xqe5o")
+InitialValue = 13.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_mvp40"]
+script = ExtResource("1_xqe5o")
+InitialValue = 11.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_gyu4v"]
+script = ExtResource("1_xqe5o")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0aaw7"]
+script = ExtResource("1_xqe5o")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50v4m"]
+atlas = ExtResource("2_fou4g")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="Resource" id="Resource_cdbkf"]
+script = ExtResource("3_86j1i")
+AttackRange = SubResource("Resource_41efx")
+NumTargets = SubResource("Resource_gyu4v")
+AreaOfEffect = SubResource("Resource_nk7nw")
+ProjectileSpeed = SubResource("Resource_0aaw7")
+ProjectileSprite = SubResource("AtlasTexture_50v4m")
+Homing = true
+AttackSpeed = SubResource("Resource_d3ra2")
+BaseAttackCooldown = SubResource("Resource_jshaw")
+MinAttackDamage = SubResource("Resource_mvp40")
+MaxAttackDamage = SubResource("Resource_8rmeu")
+AttackClass = 3
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_wq16j")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_xqe5o")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_y4wxa"]
+script = ExtResource("1_xqe5o")
+InitialValue = 160.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_xqe5o")
+InitialValue = 113.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_xqe5o")
+InitialValue = 100.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_xqe5o")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4poo"]
+atlas = ExtResource("2_fou4g")
+region = Rect2(256, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_tp0kl")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_y4wxa")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_v4poo")
+UnitSize = 1
+Flying = false
+ArmorClass = 0
+UnitName = "Priest"
+Description = "He stands for the light.  Abilities: Heal, Dispel, Inner Fire"
+Abilities = Array[ExtResource("1_l3blg")]([SubResource("Resource_cdbkf")])

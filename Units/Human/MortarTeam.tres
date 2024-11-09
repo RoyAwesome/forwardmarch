@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://cpck07bfgge6f"]
+
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_lfgns"]
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_smlga"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_10k3y"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_k3pq3"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_ipie4"]
+
+[sub_resource type="Resource" id="Resource_dqtfu"]
+script = ExtResource("1_lfgns")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_txhda"]
+script = ExtResource("1_lfgns")
+InitialValue = 800.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_cm3hq"]
+script = ExtResource("1_lfgns")
+InitialValue = 3.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_6hdje"]
+script = ExtResource("1_lfgns")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_v587d"]
+script = ExtResource("1_lfgns")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_crxcj"]
+script = ExtResource("1_lfgns")
+InitialValue = 35.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_bd8l5"]
+script = ExtResource("1_lfgns")
+InitialValue = 32.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_jj21s"]
+script = ExtResource("1_lfgns")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_g8uyq"]
+script = ExtResource("1_lfgns")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovxas"]
+atlas = ExtResource("2_10k3y")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="Resource" id="Resource_oasmo"]
+script = ExtResource("3_ipie4")
+AttackRange = SubResource("Resource_txhda")
+NumTargets = SubResource("Resource_jj21s")
+AreaOfEffect = SubResource("Resource_dqtfu")
+ProjectileSpeed = SubResource("Resource_g8uyq")
+ProjectileSprite = SubResource("AtlasTexture_ovxas")
+Homing = true
+AttackSpeed = SubResource("Resource_cm3hq")
+BaseAttackCooldown = SubResource("Resource_6hdje")
+MinAttackDamage = SubResource("Resource_bd8l5")
+MaxAttackDamage = SubResource("Resource_crxcj")
+AttackClass = 4
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_v587d")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_lfgns")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_wj2aq"]
+script = ExtResource("1_lfgns")
+InitialValue = 260.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_lfgns")
+InitialValue = 160.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_lfgns")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_lfgns")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3870"]
+atlas = ExtResource("2_10k3y")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_k3pq3")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_wj2aq")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_i3870")
+UnitSize = 2
+Flying = false
+ArmorClass = 3
+UnitName = "Mortar Team"
+Description = "Mortgan and Argan, shoots mortars at fools.  Upgrades: Flare and Shrapnel"
+Abilities = Array[ExtResource("1_smlga")]([SubResource("Resource_oasmo")])

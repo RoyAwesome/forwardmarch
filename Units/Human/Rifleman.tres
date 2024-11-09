@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://cbbmd7gwm050p"]
+
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_ctdyh"]
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_ssmx1"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_qln8t"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_srp18"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_h6yky"]
+
+[sub_resource type="Resource" id="Resource_dv16d"]
+script = ExtResource("1_ctdyh")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_4hqt8"]
+script = ExtResource("1_ctdyh")
+InitialValue = 400.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_lxlu2"]
+script = ExtResource("1_ctdyh")
+InitialValue = 1.17
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_yj4e0"]
+script = ExtResource("1_ctdyh")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_5uaaa"]
+script = ExtResource("1_ctdyh")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_kq1ce"]
+script = ExtResource("1_ctdyh")
+InitialValue = 24.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_ptg5t"]
+script = ExtResource("1_ctdyh")
+InitialValue = 18.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_4hrty"]
+script = ExtResource("1_ctdyh")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_40q01"]
+script = ExtResource("1_ctdyh")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6men"]
+atlas = ExtResource("2_qln8t")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_ino7k"]
+script = ExtResource("3_h6yky")
+AttackRange = SubResource("Resource_4hqt8")
+NumTargets = SubResource("Resource_4hrty")
+AreaOfEffect = SubResource("Resource_dv16d")
+ProjectileSpeed = SubResource("Resource_40q01")
+ProjectileSprite = SubResource("AtlasTexture_s6men")
+Homing = true
+AttackSpeed = SubResource("Resource_lxlu2")
+BaseAttackCooldown = SubResource("Resource_yj4e0")
+MinAttackDamage = SubResource("Resource_ptg5t")
+MaxAttackDamage = SubResource("Resource_kq1ce")
+AttackClass = 2
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_5uaaa")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_ctdyh")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_3isnb"]
+script = ExtResource("1_ctdyh")
+InitialValue = 160.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_ctdyh")
+InitialValue = 150.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_ctdyh")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_ctdyh")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gf21"]
+atlas = ExtResource("2_qln8t")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_srp18")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_3isnb")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_7gf21")
+UnitSize = 1
+Flying = false
+ArmorClass = 2
+UnitName = "Rifleman"
+Description = "Rifleman is a simple short range unit that fires a rifle.  Bang! Upgrades: Long Rifle"
+Abilities = Array[ExtResource("1_ssmx1")]([SubResource("Resource_ino7k")])

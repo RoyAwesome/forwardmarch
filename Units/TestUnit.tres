@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitResource" load_steps=12 format=3 uid="uid://nlcqwjf254bk"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=13 format=3 uid="uid://nlcqwjf254bk"]
 
 [ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_qrb5a"]
 [ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="1_r2vlc"]
@@ -18,7 +18,7 @@ script = ExtResource("1_qrb5a")
 InitialValue = 0
 GrowthPerLevel = -1.0
 
-[sub_resource type="Resource" id="Resource_q8a7n"]
+[sub_resource type="Resource" id="Resource_u5fr0"]
 script = ExtResource("1_qrb5a")
 InitialValue = 1.0
 GrowthPerLevel = -1.0
@@ -27,6 +27,11 @@ GrowthPerLevel = -1.0
 script = ExtResource("1_qrb5a")
 InitialValue = 0
 GrowthPerLevel = 0
+
+[sub_resource type="Resource" id="Resource_5w1rq"]
+script = ExtResource("1_qrb5a")
+InitialValue = 0
+GrowthPerLevel = -1.0
 
 [sub_resource type="Resource" id="Resource_hce2g"]
 script = ExtResource("1_qrb5a")
@@ -54,9 +59,14 @@ MaxHealth = SubResource("Resource_i7bf7")
 MaxMana = SubResource("Resource_vkesm")
 Armor = SubResource("Resource_8fj2g")
 AttackSpeed = SubResource("Resource_hl47y")
-BaseAttackColldown = SubResource("Resource_q8a7n")
+BaseAttackCooldown = SubResource("Resource_u5fr0")
 Intelligence = SubResource("Resource_hce2g")
 Agility = SubResource("Resource_q3vyd")
 BaseStrength = SubResource("Resource_e0tnm")
+Cost = SubResource("Resource_5w1rq")
 MovementSpeed = SubResource("Resource_0ybtb")
 UnitSize = 1
+Flying = false
+ArmorClass = 0
+UnitName = ""
+Description = ""

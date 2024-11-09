@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://djkaqq6kje77k"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_5bc0s"]
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_5qx86"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_j3ej1"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_nfaie"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_p5b5c"]
+
+[sub_resource type="Resource" id="Resource_rt4f2"]
+script = ExtResource("1_5qx86")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_etv5b"]
+script = ExtResource("1_5qx86")
+InitialValue = 600.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_eda1k"]
+script = ExtResource("1_5qx86")
+InitialValue = 1.14
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0dqr6"]
+script = ExtResource("1_5qx86")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_fskce"]
+script = ExtResource("1_5qx86")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_ql4fh"]
+script = ExtResource("1_5qx86")
+InitialValue = 13.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_w1o0a"]
+script = ExtResource("1_5qx86")
+InitialValue = 11.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0a7kj"]
+script = ExtResource("1_5qx86")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_n43ky"]
+script = ExtResource("1_5qx86")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq77p"]
+atlas = ExtResource("2_j3ej1")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_w0ien"]
+script = ExtResource("3_p5b5c")
+AttackRange = SubResource("Resource_etv5b")
+NumTargets = SubResource("Resource_0a7kj")
+AreaOfEffect = SubResource("Resource_rt4f2")
+ProjectileSpeed = SubResource("Resource_n43ky")
+ProjectileSprite = SubResource("AtlasTexture_dq77p")
+Homing = true
+AttackSpeed = SubResource("Resource_eda1k")
+BaseAttackCooldown = SubResource("Resource_0dqr6")
+MinAttackDamage = SubResource("Resource_w1o0a")
+MaxAttackDamage = SubResource("Resource_ql4fh")
+AttackClass = 1
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_fskce")
+DisplayMode = 0
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_5qx86")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_xcvya"]
+script = ExtResource("1_5qx86")
+InitialValue = 140.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_5qx86")
+InitialValue = 127.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_5qx86")
+InitialValue = 100.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_5qx86")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syd15"]
+atlas = ExtResource("2_j3ej1")
+region = Rect2(128, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_nfaie")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_xcvya")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_syd15")
+UnitSize = 1
+Flying = false
+ArmorClass = 0
+UnitName = "Sorceress"
+Description = "The Sorceres is a spellcaster with Slow, Invisibility, and Polymorph"
+Abilities = Array[ExtResource("1_5bc0s")]([SubResource("Resource_w0ien")])

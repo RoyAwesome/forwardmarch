@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://x2w4oufjhcwo"]
+
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_34b4c"]
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_raqvl"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_28xfs"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_p0pb2"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="4_gfhe0"]
+
+[sub_resource type="Resource" id="Resource_h4ajv"]
+script = ExtResource("1_34b4c")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_biwpt"]
+script = ExtResource("1_34b4c")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_h0ca7"]
+script = ExtResource("1_34b4c")
+InitialValue = 1.14
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_bcywa"]
+script = ExtResource("1_34b4c")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_rc08f"]
+script = ExtResource("1_34b4c")
+InitialValue = 0.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_313a1"]
+script = ExtResource("1_34b4c")
+InitialValue = 21.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_rj6gg"]
+script = ExtResource("1_34b4c")
+InitialValue = 19.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_gtcqb"]
+script = ExtResource("1_34b4c")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_g42lt"]
+script = ExtResource("1_34b4c")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbmwj"]
+atlas = ExtResource("2_p0pb2")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="Resource" id="Resource_h40ut"]
+script = ExtResource("4_gfhe0")
+AttackRange = SubResource("Resource_biwpt")
+NumTargets = SubResource("Resource_gtcqb")
+AreaOfEffect = SubResource("Resource_h4ajv")
+ProjectileSpeed = SubResource("Resource_g42lt")
+ProjectileSprite = SubResource("AtlasTexture_nbmwj")
+Homing = true
+AttackSpeed = SubResource("Resource_h0ca7")
+BaseAttackCooldown = SubResource("Resource_bcywa")
+MinAttackDamage = SubResource("Resource_rj6gg")
+MaxAttackDamage = SubResource("Resource_313a1")
+AttackClass = 2
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_rc08f")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_34b4c")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_laj5n"]
+script = ExtResource("1_34b4c")
+InitialValue = 180.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_34b4c")
+InitialValue = 224.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_34b4c")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_34b4c")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3eqy"]
+atlas = ExtResource("2_p0pb2")
+region = Rect2(448, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_28xfs")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_laj5n")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_f3eqy")
+UnitSize = 2
+Flying = true
+ArmorClass = 1
+UnitName = "Dragon Hawk"
+Description = "Dragon Hawks are flying units that can grapple.  Upgrades: Aereal Shackles, Animal War Training
+"
+Abilities = Array[ExtResource("1_raqvl")]([SubResource("Resource_h40ut")])

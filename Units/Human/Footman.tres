@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=18 format=3 uid="uid://cy5q0vigre3f"]
+
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_8o6qu"]
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_fhuay"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_mhx7t"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_pgtgg"]
+[ext_resource type="Script" path="res://Scripts/Ability/MeleeAttack.gd" id="2_ua6we"]
+
+[sub_resource type="Resource" id="Resource_w1lp0"]
+script = ExtResource("1_8o6qu")
+InitialValue = 0.88
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_h0xp2"]
+script = ExtResource("1_8o6qu")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_e3sge"]
+script = ExtResource("1_8o6qu")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_gh4lq"]
+script = ExtResource("1_8o6qu")
+InitialValue = 13.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_hvkim"]
+script = ExtResource("1_8o6qu")
+InitialValue = 12.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_aq6xv"]
+script = ExtResource("2_ua6we")
+AttackSpeed = SubResource("Resource_w1lp0")
+BaseAttackCooldown = SubResource("Resource_h0xp2")
+MinAttackDamage = SubResource("Resource_hvkim")
+MaxAttackDamage = SubResource("Resource_gh4lq")
+AttackClass = 0
+Name = null
+Description = null
+ManaCost = SubResource("Resource_e3sge")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_8o6qu")
+InitialValue = 2.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_8gyvb"]
+script = ExtResource("1_8o6qu")
+InitialValue = 110.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_8o6qu")
+InitialValue = 220.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_8o6qu")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_8o6qu")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0lho"]
+atlas = ExtResource("2_pgtgg")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_mhx7t")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_8gyvb")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_n0lho")
+UnitSize = 1
+Flying = false
+ArmorClass = 3
+UnitName = "Footman"
+Description = "Footman are a great early front line unit."
+Abilities = Array[ExtResource("1_fhuay")]([SubResource("Resource_aq6xv")])

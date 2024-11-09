@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitSet" load_steps=4 format=3 uid="uid://dbjoc8pvykn1i"]
+
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="1_o7wth"]
+[ext_resource type="Resource" uid="uid://bgluetjqfalt1" path="res://Units/Human/Spellbreaker.tres" id="2_1vgxg"]
+[ext_resource type="Script" path="res://Scripts/UnitSet.gd" id="2_fo0ga"]
+
+[resource]
+script = ExtResource("2_fo0ga")
+Units = Array[ExtResource("1_o7wth")]([ExtResource("2_1vgxg")])

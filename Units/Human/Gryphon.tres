@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://dqy7trk432v4m"]
+
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_x7jvc"]
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_yim1d"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_cq8bl"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_qh3cw"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="4_8bo1j"]
+
+[sub_resource type="Resource" id="Resource_wo06s"]
+script = ExtResource("1_x7jvc")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_6vsjv"]
+script = ExtResource("1_x7jvc")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_ghxi0"]
+script = ExtResource("1_x7jvc")
+InitialValue = 1.43
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_et4k1"]
+script = ExtResource("1_x7jvc")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_o1mva"]
+script = ExtResource("1_x7jvc")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_cx52b"]
+script = ExtResource("1_x7jvc")
+InitialValue = 55.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_rqjce"]
+script = ExtResource("1_x7jvc")
+InitialValue = 45.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_d7ly2"]
+script = ExtResource("1_x7jvc")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_5xou6"]
+script = ExtResource("1_x7jvc")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kh12"]
+atlas = ExtResource("2_cq8bl")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="Resource" id="Resource_xkpes"]
+script = ExtResource("4_8bo1j")
+AttackRange = SubResource("Resource_6vsjv")
+NumTargets = SubResource("Resource_d7ly2")
+AreaOfEffect = SubResource("Resource_wo06s")
+ProjectileSpeed = SubResource("Resource_5xou6")
+ProjectileSprite = SubResource("AtlasTexture_3kh12")
+Homing = true
+AttackSpeed = SubResource("Resource_ghxi0")
+BaseAttackCooldown = SubResource("Resource_et4k1")
+MinAttackDamage = SubResource("Resource_rqjce")
+MaxAttackDamage = SubResource("Resource_cx52b")
+AttackClass = 0
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_o1mva")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_x7jvc")
+InitialValue = 2.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0wprt"]
+script = ExtResource("1_x7jvc")
+InitialValue = 260.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_x7jvc")
+InitialValue = 322.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_x7jvc")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_x7jvc")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdnfe"]
+atlas = ExtResource("2_cq8bl")
+region = Rect2(128, 64, 64, 64)
+
+[resource]
+script = ExtResource("2_qh3cw")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_0wprt")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_tdnfe")
+UnitSize = 1
+Flying = true
+ArmorClass = 1
+UnitName = "Gryphon"
+Description = "Gryphons are pinnacle flying units, utilizing magic aoe damage against enemies.  Upgrades: Storm Hammer, Animal War Training
+"
+Abilities = Array[ExtResource("1_yim1d")]([SubResource("Resource_xkpes")])

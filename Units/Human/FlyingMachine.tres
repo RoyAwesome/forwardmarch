@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://0p4pw0tkhga6"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_fnnkg"]
+[ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_txetc"]
+[ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_6624r"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_w2f2r"]
+[ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="4_3vqq6"]
+
+[sub_resource type="Resource" id="Resource_nxd3y"]
+script = ExtResource("1_txetc")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_u10jr"]
+script = ExtResource("1_txetc")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_kyp56"]
+script = ExtResource("1_txetc")
+InitialValue = 1.3
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_xglnf"]
+script = ExtResource("1_txetc")
+InitialValue = 1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_sovsr"]
+script = ExtResource("1_txetc")
+InitialValue = -1.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_30tgy"]
+script = ExtResource("1_txetc")
+InitialValue = 8.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_ox7v7"]
+script = ExtResource("1_txetc")
+InitialValue = 7.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_p6tnk"]
+script = ExtResource("1_txetc")
+InitialValue = 1
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_o6whu"]
+script = ExtResource("1_txetc")
+InitialValue = 500.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vls0h"]
+atlas = ExtResource("2_w2f2r")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="Resource" id="Resource_s8cyo"]
+script = ExtResource("4_3vqq6")
+AttackRange = SubResource("Resource_u10jr")
+NumTargets = SubResource("Resource_p6tnk")
+AreaOfEffect = SubResource("Resource_nxd3y")
+ProjectileSpeed = SubResource("Resource_o6whu")
+ProjectileSprite = SubResource("AtlasTexture_vls0h")
+Homing = true
+AttackSpeed = SubResource("Resource_kyp56")
+BaseAttackCooldown = SubResource("Resource_xglnf")
+MinAttackDamage = SubResource("Resource_ox7v7")
+MaxAttackDamage = SubResource("Resource_30tgy")
+AttackClass = 2
+Name = ""
+Description = ""
+ManaCost = SubResource("Resource_sovsr")
+DisplayMode = 2
+
+[sub_resource type="Resource" id="Resource_8fj2g"]
+script = ExtResource("1_txetc")
+InitialValue = 2.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_fi1o4"]
+script = ExtResource("1_txetc")
+InitialValue = 130.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_i7bf7"]
+script = ExtResource("1_txetc")
+InitialValue = 90.0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_vkesm"]
+script = ExtResource("1_txetc")
+InitialValue = 0
+GrowthPerLevel = -1.0
+
+[sub_resource type="Resource" id="Resource_0ybtb"]
+script = ExtResource("1_txetc")
+InitialValue = 10
+GrowthPerLevel = -1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcofv"]
+atlas = ExtResource("2_w2f2r")
+region = Rect2(384, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_6624r")
+MaxHealth = SubResource("Resource_i7bf7")
+MaxMana = SubResource("Resource_vkesm")
+Armor = SubResource("Resource_8fj2g")
+Cost = SubResource("Resource_fi1o4")
+MovementSpeed = SubResource("Resource_0ybtb")
+Sprite = SubResource("AtlasTexture_pcofv")
+UnitSize = 1
+Flying = true
+ArmorClass = 3
+UnitName = "Flying Machine"
+Description = "The Flying Machine is a cheap, flying creature.  Abilities: Bombs, True Sight, Flak Cannon.  "
+Abilities = Array[ExtResource("1_fnnkg")]([SubResource("Resource_s8cyo")])
