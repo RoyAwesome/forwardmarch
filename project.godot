@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="DirectStrike"
+config/name="Forward March"
+config/description="A 3v3 Autobattler inspired by Direct Strike for Warcraft 3"
 run/main_scene="res://Scenes/GameScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
