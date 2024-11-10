@@ -6,6 +6,10 @@ extends Resource
 var OwningTeam : Team
 var OwningBoard : Board
 
+var Abilities : AbilityRunner
+
+signal force_input_pressed(input : InputEvent)
+
 var ForceAbilities : Dictionary = {
 	"Units" : preload("res://Units/AbilitySets/ForceUnitAbilities.tres")
 }
@@ -13,3 +17,5 @@ var ForceAbilities : Dictionary = {
 func _init(player_id : int, on_team : Team):
 	PlayerID = player_id
 	OwningTeam = on_team
+	Abilities = AbilityRunner.new(self)
+	

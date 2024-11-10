@@ -1,6 +1,8 @@
 class_name AbilityButton
 extends NinePatchRect
 
+signal ability_want_execute(Button : AbilityButton)
+
 var BoundAbility : BaseAbility:
 	set(value):
 		BoundAbility = value
@@ -19,6 +21,5 @@ func _ready() -> void:
 	BoundAbility = null
 
 func _on_button_pressed() -> void:
-	pass # Replace with function body.
-	#Get the current force
-	# Execute the ability on the force
+	if BoundAbility:
+		ability_want_execute.emit(self)

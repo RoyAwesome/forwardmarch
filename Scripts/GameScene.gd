@@ -57,6 +57,7 @@ func create_player_force(player_id : int) -> Force:
 	
 	var PlayerBoard : Board = BoardScene.instantiate()
 	PlayerBoard.name = "Player %d Board" % player_id
+	PlayerBoard.OwningForce = force
 	
 	viewport.add_child.call_deferred(PlayerBoard)
 	
@@ -125,3 +126,10 @@ func _on_board_view_gui_input(event: InputEvent) -> void:
 		var parent_viewport = CurrentViewedBoard.get_parent() as Viewport
 		if(parent_viewport):
 			parent_viewport.push_input(event)
+
+
+func _on_button_grid_ability_wants_run(ability: BaseAbility, button: AbilityButton) -> void:
+	#lower the panel
+	%ButtonGrid.visible = false
+	#run the ability
+	get_current_player().Abilities.run_ability(ability)

@@ -10,4 +10,5 @@ func _ready() -> void:
 	$Camera2D.make_current()
 
 func _input(event: InputEvent) -> void:
-	print("board sees " + event.as_text())
+	if(OwningForce):
+		OwningForce.force_input_pressed.emit(event)

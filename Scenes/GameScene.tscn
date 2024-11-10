@@ -282,4 +282,5 @@ position = Vector2(576, 324)
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer4/ItemButton" to="." method="_on_board_button_toggled" binds= [4]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer5/ViewButton" to="." method="_on_board_button_toggled" binds= [5]]
 [connection signal="gui_input" from="BoardPanel/HBoxContainer/Container/HBoxContainer/BoardView" to="." method="_on_board_view_gui_input"]
+[connection signal="ability_wants_run" from="BoardPanel/ButtonGrid" to="." method="_on_button_grid_ability_wants_run"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
