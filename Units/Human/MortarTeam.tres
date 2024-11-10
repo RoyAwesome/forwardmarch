@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://cpck07bfgge6f"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=26 format=3 uid="uid://cpck07bfgge6f"]
 
 [ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_lfgns"]
 [ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_smlga"]
+[ext_resource type="Resource" uid="uid://lvrkigapni0h" path="res://Units/AbilitySets/SharedUnitAbilities.tres" id="2_2hus2"]
 [ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_10k3y"]
 [ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_k3pq3"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilitySet.gd" id="2_rodmx"]
 [ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_ipie4"]
 
 [sub_resource type="Resource" id="Resource_dqtfu"]
@@ -73,6 +75,10 @@ Description = ""
 ManaCost = SubResource("Resource_v587d")
 DisplayMode = 2
 
+[sub_resource type="Resource" id="Resource_7gic8"]
+script = ExtResource("2_rodmx")
+Abilities = Array[ExtResource("1_smlga")]([SubResource("Resource_oasmo")])
+
 [sub_resource type="Resource" id="Resource_8fj2g"]
 script = ExtResource("1_lfgns")
 InitialValue = 0
@@ -115,4 +121,4 @@ Flying = false
 ArmorClass = 3
 UnitName = "Mortar Team"
 Description = "Mortgan and Argan, shoots mortars at fools.  Upgrades: Flare and Shrapnel"
-Abilities = Array[ExtResource("1_smlga")]([SubResource("Resource_oasmo")])
+AbilitySets = Array[ExtResource("2_rodmx")]([ExtResource("2_2hus2"), SubResource("Resource_7gic8")])

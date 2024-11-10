@@ -38,4 +38,4 @@ enum ArmorType {
 
 @export var Hero : HeroData
 
-@export var Abilities : Array[BaseAbility] = []
+@export var AbilitySets : Array[AbilitySet]

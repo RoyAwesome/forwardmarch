@@ -71,14 +71,19 @@ func create_player_force(player_id : int) -> Force:
 func _process(delta: float) -> void:
 	pass
 
+func get_current_player() -> Force:
+	return AllForces[LocalPlayer]
 
 func _on_board_panel_button_toggled(toggled_on: bool) -> void:
 	BoardPanel.visible = toggled_on
 	%BoardButton.button_pressed = toggled_on # Toggle on the board when you open the board panel
 
 func _on_board_button_toggled(toggled_on: bool, button_index: int) -> void:
-	var buttons : Array = [%BoardButton, %BaseButton, %UnitsButton, %UpgradeButton, %ItemButton, %ViewButton]
+	var buttons : Array[Button] = [%BoardButton, %BaseButton, %UnitsButton, %UpgradeButton, %ItemButton, %ViewButton]
 	ButtonGrid.visible = !toggled_on if button_index == 0 else toggled_on
+	var force_ability_set = get_current_player().ForceAbilities.get(buttons[button_index].text)
+	%ButtonGrid.BoundAbilitySet = force_ability_set
+	
 
 func timer_for_force(force : Force) -> int:
 	for wave in WaveQueue.size():

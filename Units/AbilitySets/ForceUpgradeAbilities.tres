@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilitySet" load_steps=3 format=3 uid="uid://bal1k58uncyik"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_dhli4"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilitySet.gd" id="2_sqwyj"]
+
+[resource]
+script = ExtResource("2_sqwyj")
+Abilities = Array[ExtResource("1_dhli4")]([])

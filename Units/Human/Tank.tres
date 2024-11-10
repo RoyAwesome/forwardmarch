@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="UnitResource" load_steps=34 format=3 uid="uid://baiptv1xcsjto"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=37 format=3 uid="uid://baiptv1xcsjto"]
 
 [ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_hy3x2"]
 [ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_kgnt5"]
 [ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_2f3a7"]
 [ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_juw4t"]
+[ext_resource type="Resource" uid="uid://lvrkigapni0h" path="res://Units/AbilitySets/SharedUnitAbilities.tres" id="2_qahwi"]
 [ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="4_5sfxq"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilitySet.gd" id="5_qcjdj"]
 
 [sub_resource type="Resource" id="Resource_cjivi"]
 script = ExtResource("1_hy3x2")
@@ -138,7 +140,11 @@ AttackClass = 2
 Name = ""
 Description = ""
 ManaCost = SubResource("Resource_uccg8")
-DisplayMode = 2
+DisplayMode = 0
+
+[sub_resource type="Resource" id="Resource_7qjkj"]
+script = ExtResource("5_qcjdj")
+Abilities = Array[ExtResource("1_kgnt5")]([SubResource("Resource_iwp7v"), SubResource("Resource_k4d76")])
 
 [sub_resource type="Resource" id="Resource_8fj2g"]
 script = ExtResource("1_hy3x2")
@@ -182,4 +188,4 @@ Flying = false
 ArmorClass = 4
 UnitName = "Tank"
 Description = "Tanks are the siege units of seige units.  Upgrade: Barrage"
-Abilities = Array[ExtResource("1_kgnt5")]([SubResource("Resource_iwp7v"), SubResource("Resource_k4d76")])
+AbilitySets = Array[ExtResource("5_qcjdj")]([ExtResource("2_qahwi"), SubResource("Resource_7qjkj")])

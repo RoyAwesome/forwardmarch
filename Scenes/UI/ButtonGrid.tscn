@@ -1,19 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://32gyan3m22qv"]
+[gd_scene load_steps=3 format=3 uid="uid://32gyan3m22qv"]
 
-[ext_resource type="Texture2D" uid="uid://bi5n1g2qurff2" path="res://icon.svg" id="1_k2qv1"]
+[ext_resource type="Script" path="res://Scenes/UI/button_grid.gd" id="1_pj5s1"]
+[ext_resource type="PackedScene" uid="uid://blj85yo221uvy" path="res://Scenes/UI/AbilityButton.tscn" id="2_1ogpu"]
 
 [node name="ButtonGrid" type="PanelContainer"]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
+offset_left = -1152.0
 offset_top = -648.0
-offset_right = 62.0
-offset_bottom = -268.0
-grow_horizontal = 2
+offset_right = -760.0
+offset_bottom = -370.0
+grow_horizontal = 0
 grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_pj5s1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -38,232 +42,65 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "<- Page"
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 columns = 4
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton2" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton3" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton4" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton5" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton6" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton7" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton8" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect8"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton9" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect9"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect10" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton10" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect10"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect11" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton11" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect11"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect12" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton12" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect12"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect13" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton13" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect13"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect14" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton14" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect14"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect15" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton15" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect15"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect16" type="TextureRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(92, 92)
+[node name="AbilityButton16" parent="HBoxContainer/MarginContainer2/GridContainer" instance=ExtResource("2_1ogpu")]
 layout_mode = 2
-texture = ExtResource("1_k2qv1")
-expand_mode = 1
-
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/GridContainer/TextureRect16"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

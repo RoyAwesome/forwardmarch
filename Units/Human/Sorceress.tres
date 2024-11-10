@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="UnitResource" load_steps=23 format=3 uid="uid://djkaqq6kje77k"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=26 format=3 uid="uid://djkaqq6kje77k"]
 
 [ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_5bc0s"]
 [ext_resource type="Script" path="res://Scripts/Attribute.gd" id="1_5qx86"]
+[ext_resource type="Resource" uid="uid://lvrkigapni0h" path="res://Units/AbilitySets/SharedUnitAbilities.tres" id="2_6jlj8"]
 [ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_j3ej1"]
 [ext_resource type="Script" path="res://Scripts/UnitResource.gd" id="2_nfaie"]
 [ext_resource type="Script" path="res://Scripts/Ability/RangedAttack.gd" id="3_p5b5c"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilitySet.gd" id="5_xuxy1"]
 
 [sub_resource type="Resource" id="Resource_rt4f2"]
 script = ExtResource("1_5qx86")
@@ -73,6 +75,10 @@ Description = ""
 ManaCost = SubResource("Resource_fskce")
 DisplayMode = 0
 
+[sub_resource type="Resource" id="Resource_ei8vm"]
+script = ExtResource("5_xuxy1")
+Abilities = Array[ExtResource("1_5bc0s")]([SubResource("Resource_w0ien")])
+
 [sub_resource type="Resource" id="Resource_8fj2g"]
 script = ExtResource("1_5qx86")
 InitialValue = 0
@@ -115,4 +121,4 @@ Flying = false
 ArmorClass = 0
 UnitName = "Sorceress"
 Description = "The Sorceres is a spellcaster with Slow, Invisibility, and Polymorph"
-Abilities = Array[ExtResource("1_5bc0s")]([SubResource("Resource_w0ien")])
+AbilitySets = Array[ExtResource("5_xuxy1")]([ExtResource("2_6jlj8"), SubResource("Resource_ei8vm")])

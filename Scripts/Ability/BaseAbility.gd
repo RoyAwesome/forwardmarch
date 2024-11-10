@@ -6,7 +6,9 @@ extends Resource
 
 @export var Name : String
 @export_multiline var Description : String
+@export var Icon : Texture2D
 
+#todo: generalize costs.  This can be gold, time, or mana
 @export var ManaCost : Attribute = Attribute.new(0)
 
 #the unlock required for this ability to function.  If null, no effect is required
