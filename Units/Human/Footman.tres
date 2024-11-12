@@ -40,8 +40,8 @@ BaseAttackCooldown = SubResource("Resource_h0xp2")
 MinAttackDamage = SubResource("Resource_hvkim")
 MaxAttackDamage = SubResource("Resource_gh4lq")
 AttackClass = 0
-Name = null
-Description = null
+Name = ""
+Description = ""
 ManaCost = SubResource("Resource_e3sge")
 DisplayMode = 2
 

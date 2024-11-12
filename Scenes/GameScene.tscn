@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fx8u7054ie0p"]
+[gd_scene load_steps=9 format=3 uid="uid://fx8u7054ie0p"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.gd" id="1_7rsgr"]
 [ext_resource type="PackedScene" uid="uid://duyoaqovb7p6y" path="res://Scenes/UI/StatDisplay.tscn" id="2_4hjdr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b14md7g2o6yd8" path="res://Scenes/Minimap.tscn" id="4_nux57"]
 [ext_resource type="ButtonGroup" uid="uid://b0v22ksyy78aj" path="res://Scenes/UI/BoardButtons.tres" id="5_sevyo"]
 [ext_resource type="PackedScene" uid="uid://32gyan3m22qv" path="res://Scenes/UI/ButtonGrid.tscn" id="7_58o4s"]
+[ext_resource type="Texture2D" uid="uid://c6a0ng6ykb56o" path="res://Content/direction_arrow.png" id="7_osf8b"]
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_7rsgr")
@@ -240,21 +241,70 @@ offset_right = 642.0
 offset_bottom = 448.0
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="MarchLeftIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
 
-[node name="BoardView" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
+
+[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
+
+[node name="MarginContainer" type="MarginContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="BoardView" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="MarchRightIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
+flip_h = true
+
+[node name="TextureRect4" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("7_osf8b")
+flip_h = true
 
 [node name="ButtonGrid" parent="BoardPanel" instance=ExtResource("7_58o4s")]
 unique_name_in_owner = true
@@ -281,6 +331,6 @@ position = Vector2(576, 324)
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer3/UpgradeButton" to="." method="_on_board_button_toggled" binds= [3]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer4/ItemButton" to="." method="_on_board_button_toggled" binds= [4]]
 [connection signal="toggled" from="BoardPanel/HBoxContainer/VBoxContainer/MarginContainer5/ViewButton" to="." method="_on_board_button_toggled" binds= [5]]
-[connection signal="gui_input" from="BoardPanel/HBoxContainer/Container/HBoxContainer/BoardView" to="." method="_on_board_view_gui_input"]
+[connection signal="gui_input" from="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer/BoardView" to="." method="_on_board_view_gui_input"]
 [connection signal="ability_wants_run" from="BoardPanel/ButtonGrid" to="." method="_on_button_grid_ability_wants_run"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

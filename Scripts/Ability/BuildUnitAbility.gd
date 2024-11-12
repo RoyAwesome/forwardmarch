@@ -15,5 +15,6 @@ func run(ability_instance : AbilityRunner.AbilityInstance):
 	#place the unit on the user's cursor
 	
 	#wait for input that either succeeded or canceled
-	var input_event : InputEvent = await force.force_input_pressed
-	print(input_event.as_text())
+	while true:
+		var input_event : InputEvent = await force.force_input_pressed	
+		print(input_event.as_text())

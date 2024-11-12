@@ -12,3 +12,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if(OwningForce):
 		OwningForce.force_input_pressed.emit(event)
+
+func show_grid(visible : bool):
+	pass
+
+func put_unit_on_cursor(unit : UnitResource):
+	pass

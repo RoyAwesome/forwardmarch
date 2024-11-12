@@ -26,6 +26,7 @@ var CurrentViewedBoard : Board
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	BoardPanel.visible = false #I always leave this on when doing work in the scene tree.  disable it so i dont make that mistake
 	TeamDisplays = [%Team1Display, %Team2Display]
 	
 	# generate a force for each player
