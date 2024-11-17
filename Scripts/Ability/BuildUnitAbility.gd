@@ -1,6 +1,6 @@
 @tool
 class_name BuildUnitAbility
-extends BaseAbility
+extends UserInteractionAbility
 
 @export var UnitType : UnitResource
 
@@ -15,6 +15,9 @@ func run(ability_instance : AbilityRunner.AbilityInstance):
 	#place the unit on the user's cursor
 	
 	#wait for input that either succeeded or canceled
-	while true:
-		var input_event : InputEvent = await force.force_input_pressed	
-		print(input_event.as_text())
+	var R = await wait_user_confirmation(force)
+	if(R[0] == ConfirmationMode.Cancel):
+		print("User Canceled Ability")
+		return
+	var location : Vector2 = R[1] as Vector2
+	print("User wants unity at %s" % location) 
