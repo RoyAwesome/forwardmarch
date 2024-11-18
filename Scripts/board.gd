@@ -13,7 +13,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	print("board %s" % event.as_text())
 	if(OwningForce):
-		OwningForce.force_input_pressed.emit(event)
+		OwningForce.push_input(event)
 	var mouse_input : InputEventMouseMotion = event as InputEventMouseMotion
 	if(mouse_input and %Cursor.visible):
 		%Cursor.global_position = floor(mouse_input.position / 32) * 32
