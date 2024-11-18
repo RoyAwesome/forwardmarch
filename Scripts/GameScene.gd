@@ -52,6 +52,8 @@ func _ready() -> void:
 func create_player_force(player_id : int) -> Force:
 	var force : Force = Force.new(player_id, null)
 	AllForces.insert(player_id, force)
+	
+
 	# create a board for the player
 	var viewport = SubViewport.new()
 	viewport.name = "Player %d" % player_id
@@ -59,6 +61,7 @@ func create_player_force(player_id : int) -> Force:
 	var PlayerBoard : Board = BoardScene.instantiate()
 	PlayerBoard.name = "Player %d Board" % player_id
 	PlayerBoard.OwningForce = force
+	viewport.size = Vector2(832, 832)
 	
 	viewport.add_child.call_deferred(PlayerBoard)
 	
@@ -79,6 +82,7 @@ func get_current_player() -> Force:
 func _on_board_panel_button_toggled(toggled_on: bool) -> void:
 	BoardPanel.visible = toggled_on
 	%BoardButton.button_pressed = toggled_on # Toggle on the board when you open the board panel
+	
 
 func _on_board_button_toggled(toggled_on: bool, button_index: int) -> void:
 	var buttons : Array[Button] = [%BoardButton, %BaseButton, %UnitsButton, %UpgradeButton, %ItemButton, %ViewButton]
@@ -117,17 +121,7 @@ func _on_wave_timer_timeout() -> void:
 func view_board(board : Board) -> void:
 	if(!board.is_node_ready()):
 		return
-	var parent_viewport = board.get_parent() as Viewport
-	if(parent_viewport):
-		%BoardView.texture = parent_viewport.get_texture()
-		CurrentViewedBoard = board
-
-func _on_board_view_gui_input(event: InputEvent) -> void:
-	if(CurrentViewedBoard):
-		var parent_viewport = CurrentViewedBoard.get_parent() as Viewport
-		if(parent_viewport):
-			parent_viewport.push_input(event)
-
+	%BoardView.CurrentlyViewedBoard = board
 
 func _on_button_grid_ability_wants_run(ability: BaseAbility, button: AbilityButton) -> void:
 	#lower the panel

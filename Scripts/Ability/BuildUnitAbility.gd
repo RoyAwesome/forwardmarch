@@ -13,9 +13,12 @@ func run(ability_instance : AbilityRunner.AbilityInstance):
 		push_error("Build Unit ability was called by something other than a force")
 		return
 	#place the unit on the user's cursor
+	force.OwningBoard.put_unit_on_cursor(UnitType)
 	
 	#wait for input that either succeeded or canceled
 	var R = await wait_user_confirmation(force)
+	force.OwningBoard.hide_cursor()
+	
 	if(R[0] == ConfirmationMode.Cancel):
 		print("User Canceled Ability")
 		return
