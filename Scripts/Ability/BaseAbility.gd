@@ -2,8 +2,6 @@
 class_name BaseAbility
 extends Resource
 
-const AbilityRunner = preload("res://Scripts/AbilityRunner.gd")
-
 #todo
 
 @export var Name : String
@@ -23,5 +21,5 @@ enum DisplayModeEnum {
 }
 @export var DisplayMode : DisplayModeEnum
 
-func run(ability_instance : AbilityRunner.AbilityInstance):
+func run(_ability_instance : AbilityRunner.AbilityInstance):
 	pass

@@ -6,8 +6,7 @@ var BoardScene : PackedScene = preload("res://Scenes/Board.tscn")
 var TestUnit : UnitResource = preload("res://Units/TestUnit.tres")
 
 @onready var BoardPanel : PanelContainer = %BoardPanel
-@onready var ButtonGrid : PanelContainer = %ButtonGrid
-@onready var Battlefield : Battlefield = $UI/SubViewportContainer/SubViewport/Battlefield
+@onready var BattlefieldNode : Battlefield = $UI/SubViewportContainer/SubViewport/Battlefield
 
 @onready var WaveTimer : Timer = %WaveTimer
 var CurrentWave : int = 0
@@ -50,7 +49,9 @@ func _ready() -> void:
 	
 
 func create_player_force(player_id : int) -> Force:
-	var force : Force = Force.new(player_id, null)
+	var force : Force = Force.new(player_id, null)	
+	if player_id > AllForces.size():
+		AllForces.resize(player_id)
 	AllForces.insert(player_id, force)
 	
 
@@ -72,10 +73,6 @@ func create_player_force(player_id : int) -> Force:
 	force.OwningBoard = PlayerBoard
 	return force
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func get_current_player() -> Force:
 	return AllForces[LocalPlayer]
 
@@ -86,7 +83,7 @@ func _on_board_panel_button_toggled(toggled_on: bool) -> void:
 
 func _on_board_button_toggled(toggled_on: bool, button_index: int) -> void:
 	var buttons : Array[Button] = [%BoardButton, %BaseButton, %UnitsButton, %UpgradeButton, %ItemButton, %ViewButton]
-	ButtonGrid.visible = !toggled_on if button_index == 0 else toggled_on
+	%ButtonGrid.visible = !toggled_on if button_index == 0 else toggled_on
 	var force_ability_set = get_current_player().ForceAbilities.get(buttons[button_index].text)
 	%ButtonGrid.BoundAbilitySet = force_ability_set
 	
@@ -94,13 +91,13 @@ func _on_board_button_toggled(toggled_on: bool, button_index: int) -> void:
 func timer_for_force(force : Force) -> int:
 	for wave in WaveQueue.size():
 		if(WaveQueue[wave].ForceLeft == force || WaveQueue[wave].ForceRight == force):
-			return WaveTimer.time_left + (WaveTimer.wait_time * wave)
+			return floor(WaveTimer.time_left + (WaveTimer.wait_time * wave))
 	return -1
 	
 func timer_for_wave(wave : Wave) -> int:
 	for w in WaveQueue.size():
 		if(WaveQueue[w] == wave):
-			return WaveTimer.time_left + (WaveTimer.wait_time * w)
+			return floor(WaveTimer.time_left + (WaveTimer.wait_time * w))
 	return -1
 
 func _on_wave_timer_timeout() -> void:
@@ -108,10 +105,10 @@ func _on_wave_timer_timeout() -> void:
 	
 	var active_wave : Wave = WaveQueue.pop_front()
 	# Spawn the wave
-	var UnitScene: Unit = UnitScene.instantiate() as Unit
-	UnitScene.set_unit(TestUnit)
-	UnitScene.OwningForce = active_wave.ForceLeft
-	Battlefield.create_wave(active_wave.ForceLeft, CurrentWave, UnitScene)
+	var unit_scene: Unit = UnitScene.instantiate() as Unit
+	unit_scene.set_unit(TestUnit)
+	unit_scene.OwningForce = active_wave.ForceLeft
+	BattlefieldNode.create_wave(active_wave.ForceLeft, CurrentWave, unit_scene)
 	
 	# Generate the next wave
 	var NewWave : Wave = Wave.new(Team1.Forces[CurrentWave % Team1.Forces.size()], Team2.Forces[CurrentWave % Team2.Forces.size()])
@@ -123,7 +120,7 @@ func view_board(board : Board) -> void:
 		return
 	%BoardView.CurrentlyViewedBoard = board
 
-func _on_button_grid_ability_wants_run(ability: BaseAbility, button: AbilityButton) -> void:
+func _on_button_grid_ability_wants_run(ability: BaseAbility, _button: AbilityButton) -> void:
 	#lower the panel
 	%ButtonGrid.visible = false
 	#run the ability

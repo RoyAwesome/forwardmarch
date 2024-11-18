@@ -1,6 +1,5 @@
 class_name Unit
 extends Node2D
-const UnitResource = preload("res://Scripts/UnitResource.gd")
 
 @onready var MainSprite : Sprite2D = %MainSprite
 @onready var NavAgent : NavigationAgent2D = %NavigationAgent2D
@@ -26,18 +25,13 @@ func set_unit(unit : UnitResource):
 		if(unit.UnitSize >= 1):
 			NavAgent.radius = 70 * unit.UnitSize
 
-func set_movement_target(position: Vector2):
-	NavAgent.set_target_position(position)
+func set_movement_target(in_position: Vector2):
+	NavAgent.set_target_position(in_position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(UnitType):
 		set_unit(UnitType)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 var movement_delta : float = 0
 func _physics_process(delta: float) -> void:

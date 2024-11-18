@@ -1,7 +1,6 @@
 @tool
 class_name UnitResource
 extends Resource
-const Attribute : Script = preload("Attribute.gd")
 
 
 

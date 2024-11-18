@@ -4,17 +4,7 @@ extends Node2D
 @export var CameraSpeed : int = 25
 @onready var Camera : Camera2D = %Camera
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var mov :int = 0
 	if(Input.is_action_pressed("camera_left")):
 		mov = -1

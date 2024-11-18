@@ -8,8 +8,6 @@ var OwningBoard : Board
 
 var Abilities : AbilityRunner
 
-signal force_input_pressed(input : InputEvent)
-
 var ForceAbilities : Dictionary = {
 	"Units" : preload("res://Units/AbilitySets/ForceUnitAbilities.tres")
 }

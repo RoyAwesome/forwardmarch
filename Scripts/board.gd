@@ -17,9 +17,13 @@ func _input(event: InputEvent) -> void:
 	var mouse_input : InputEventMouseMotion = event as InputEventMouseMotion
 	if(mouse_input and %Cursor.visible):
 		%Cursor.global_position = floor(mouse_input.position / 32) * 32
+		
+func get_cursor_grid_location() -> Vector2i:
+	var loc =  ($BaseLayer.global_position - %Cursor.global_position) / 32
+	return Vector2i(floor(loc))
 
-func show_grid(is_visible : bool):
-	%GridLayer.visible = is_visible
+func show_grid(should_be_visible : bool):
+	%GridLayer.visible = should_be_visible
 
 func put_unit_on_cursor(unit : UnitResource):
 	if not unit:
