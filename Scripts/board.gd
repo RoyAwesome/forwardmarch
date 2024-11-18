@@ -11,7 +11,6 @@ func _ready() -> void:
 	hide_cursor()
 
 func _input(event: InputEvent) -> void:
-	print("board %s" % event.as_text())
 	if(OwningForce):
 		OwningForce.push_input(event)
 	var mouse_input : InputEventMouseMotion = event as InputEventMouseMotion

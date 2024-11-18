@@ -1,24 +1,30 @@
-[gd_resource type="Resource" script_class="AbilitySet" load_steps=8 format=3 uid="uid://cgetaj8hhuk52"]
+[gd_resource type="Resource" script_class="AbilitySet" load_steps=10 format=3 uid="uid://cgetaj8hhuk52"]
 
 [ext_resource type="Script" path="res://Scripts/Ability/BaseAbility.gd" id="1_s56es"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilitySet.gd" id="2_6xggt"]
 [ext_resource type="Script" path="res://Scripts/Attribute.gd" id="2_imidc"]
+[ext_resource type="Texture2D" uid="uid://d1vi4naws7nu1" path="res://Units/Human/human-base-sprites.png" id="2_n158k"]
 [ext_resource type="Resource" uid="uid://cy5q0vigre3f" path="res://Units/Human/Footman.tres" id="3_ns0ww"]
 [ext_resource type="Script" path="res://Scripts/Ability/BuildUnitAbility.gd" id="4_dja06"]
 
-[sub_resource type="Resource" id="Resource_jpehe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bmrg"]
+atlas = ExtResource("2_n158k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_hyc6i"]
 script = ExtResource("2_imidc")
-InitialValue = 0
+InitialValue = 0.0
 GrowthPerLevel = -1.0
 
-[sub_resource type="Resource" id="Resource_58l07"]
+[sub_resource type="Resource" id="Resource_o54kd"]
 script = ExtResource("4_dja06")
 UnitType = ExtResource("3_ns0ww")
 Name = "Build Footman"
 Description = ""
-ManaCost = SubResource("Resource_jpehe")
+Icon = SubResource("AtlasTexture_7bmrg")
+ManaCost = SubResource("Resource_hyc6i")
 DisplayMode = 0
 
 [resource]
 script = ExtResource("2_6xggt")
-Abilities = Array[ExtResource("1_s56es")]([SubResource("Resource_58l07")])
+Abilities = Array[ExtResource("1_s56es")]([SubResource("Resource_o54kd")])
