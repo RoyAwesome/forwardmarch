@@ -8,6 +8,8 @@ const GridSizeMinusOne := GridSize - Vector2i.ONE #used in bounds checking
 const BoardGridOffset := Vector2i(4, 1)
 const TileSizeInPixels := 32
 
+var grid_array : Array[UnitNode]
+
 @onready var Camera : Camera2D = $Camera2D
 
 var cursor_unit_size := 0
@@ -22,6 +24,17 @@ func tile_position_to_global_position(pos : Vector2i) -> Vector2:
 func _ready() -> void:
 	$Camera2D.make_current()
 	hide_cursor()
+
+func place_unit_at_location(unit : UnitResource, location: Vector2i):
+	if not unit: 
+		push_error("Unit must be valid") 
+		return
+	var unit_scene := load("res://Scenes/UnitNode.tscn")
+	var instanced_unit := unit_scene.instantiate() as UnitNode
+	instanced_unit.UnitType = unit
+	instanced_unit.global_position = tile_position_to_global_position(location)
+	$UnitContainer.add_child(instanced_unit)
+	
 
 func _input(event: InputEvent) -> void:
 	if(OwningForce):

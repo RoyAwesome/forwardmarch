@@ -22,5 +22,4 @@ func run(ability_instance : AbilityRunner.AbilityInstance):
 	if(R[0] == ConfirmationMode.Cancel):
 		print("User Canceled Ability")
 		return
-	var _location : Vector2 = R[1] as Vector2
-	print("User wants unit at %s" % force.OwningBoard.get_cursor_grid_location()) 
+	force.OwningBoard.place_unit_at_location(UnitType, force.OwningBoard.get_cursor_grid_location())

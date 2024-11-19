@@ -1,7 +1,7 @@
 class_name GameScene
 extends Node
 
-var UnitScene : PackedScene = preload("res://Scenes/Unit.tscn")
+var UnitScene : PackedScene = preload("res://Scenes/UnitNode.tscn")
 var BoardScene : PackedScene = preload("res://Scenes/Board.tscn")
 var TestUnit : UnitResource = preload("res://Units/TestUnit.tres")
 
@@ -105,8 +105,8 @@ func _on_wave_timer_timeout() -> void:
 	
 	var active_wave : Wave = WaveQueue.pop_front()
 	# Spawn the wave
-	var unit_scene: Unit = UnitScene.instantiate() as Unit
-	unit_scene.set_unit(TestUnit)
+	var unit_scene := UnitScene.instantiate() as UnitNode
+	unit_scene.UnitType = TestUnit
 	unit_scene.OwningForce = active_wave.ForceLeft
 	BattlefieldNode.create_wave(active_wave.ForceLeft, CurrentWave, unit_scene)
 	

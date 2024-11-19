@@ -46,3 +46,5 @@ offset = Vector2(32, 32)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 process_callback = 0
+
+[node name="UnitContainer" type="Node2D" parent="."]

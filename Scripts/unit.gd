@@ -1,4 +1,4 @@
-class_name Unit
+class_name UnitNode
 extends Node2D
 
 @onready var MainSprite : Sprite2D = %MainSprite
@@ -9,21 +9,22 @@ extends Node2D
 var OwningForce : Force
 
 # Unit this is copied from
-var UnitTemplate : Unit
-var UnitType : UnitResource;
+var UnitTemplate : UnitNode
+var UnitType : UnitResource:
+	set(value):
+		UnitType = value
+		if UnitType and is_node_ready():
+			if(UnitType.Sprite):
+				MainSprite.texture = UnitType.Sprite
+				scale = Vector2(UnitType.UnitSize * 32, UnitType.UnitSize * 32) / UnitType.Sprite.get_size() 
+			if(UnitType.UnitSize >= 1):
+				NavAgent.radius = 70 * UnitType.UnitSize
 
 
-func init_from_template(unit : Unit):
+func init_from_template(unit : UnitNode):
 	UnitTemplate = unit
-	set_unit(unit.UnitType)	
-
-func set_unit(unit : UnitResource):
-	UnitType = unit
-	if(is_node_ready()):
-		if(unit.Sprite):
-			MainSprite.texture = unit.Sprite
-		if(unit.UnitSize >= 1):
-			NavAgent.radius = 70 * unit.UnitSize
+	if UnitTemplate.UnitType:
+		UnitType = UnitTemplate.UnitType
 
 func set_movement_target(in_position: Vector2):
 	NavAgent.set_target_position(in_position)
@@ -31,7 +32,7 @@ func set_movement_target(in_position: Vector2):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(UnitType):
-		set_unit(UnitType)
+		UnitType = UnitType
 	
 var movement_delta : float = 0
 func _physics_process(delta: float) -> void:
