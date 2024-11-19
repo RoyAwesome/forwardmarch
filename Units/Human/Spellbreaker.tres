@@ -64,14 +64,14 @@ NumTargets = SubResource("Resource_63yfi")
 AreaOfEffect = SubResource("Resource_ntt21")
 ProjectileSpeed = SubResource("Resource_j04ay")
 ProjectileSprite = SubResource("AtlasTexture_eyhgd")
-Homing = null
+Homing = true
 AttackSpeed = SubResource("Resource_xter6")
 BaseAttackCooldown = SubResource("Resource_psa7f")
 MinAttackDamage = SubResource("Resource_rwklj")
 MaxAttackDamage = SubResource("Resource_hxp2p")
 AttackClass = 0
 Name = ""
-Description = null
+Description = ""
 ManaCost = SubResource("Resource_qw8u1")
 DisplayMode = 2
 
