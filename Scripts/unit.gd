@@ -9,7 +9,12 @@ extends Node2D
 var OwningForce : Force
 
 # Unit this is copied from
-var UnitTemplate : UnitNode
+var UnitTemplate : UnitNode:
+	set(value):
+		UnitTemplate = value
+		if UnitTemplate:
+			UnitType = UnitTemplate.UnitType
+			OwningForce = UnitTemplate.OwningForce
 var UnitType : UnitResource:
 	set(value):
 		UnitType = value
@@ -20,11 +25,6 @@ var UnitType : UnitResource:
 			if(UnitType.UnitSize >= 1):
 				NavAgent.radius = 70 * UnitType.UnitSize
 
-
-func init_from_template(unit : UnitNode):
-	UnitTemplate = unit
-	if UnitTemplate.UnitType:
-		UnitType = UnitTemplate.UnitType
 
 func set_movement_target(in_position: Vector2):
 	NavAgent.set_target_position(in_position)

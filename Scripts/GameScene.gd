@@ -34,8 +34,8 @@ func _ready() -> void:
 	for i in 3:
 		PlayersIn1.push_back(create_player_force(i))
 		PlayersIn2.push_back(create_player_force(i + 3))
-	Team1 = Team.new(PlayersIn1)
-	Team2 = Team.new(PlayersIn1)
+	Team1 = Team.new(PlayersIn1, Team.UnitDirection.RIGHT, 0)
+	Team2 = Team.new(PlayersIn2, Team.UnitDirection.LEFT, 1)
 	for i in 3:
 		WaveQueue.push_back(Wave.new(Team1.Forces[i % Team1.Forces.size()], Team2.Forces[i % Team2.Forces.size()]))	
 	
@@ -105,10 +105,7 @@ func _on_wave_timer_timeout() -> void:
 	
 	var active_wave : Wave = WaveQueue.pop_front()
 	# Spawn the wave
-	var unit_scene := UnitScene.instantiate() as UnitNode
-	unit_scene.UnitType = TestUnit
-	unit_scene.OwningForce = active_wave.ForceLeft
-	BattlefieldNode.create_wave(active_wave.ForceLeft, CurrentWave, unit_scene)
+	BattlefieldNode.create_wave(active_wave.ForceLeft, CurrentWave)
 	
 	# Generate the next wave
 	var NewWave : Wave = Wave.new(Team1.Forces[CurrentWave % Team1.Forces.size()], Team2.Forces[CurrentWave % Team2.Forces.size()])

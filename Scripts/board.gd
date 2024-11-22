@@ -34,6 +34,7 @@ func place_unit_at_location(unit : UnitResource, location: Vector2i):
 	instanced_unit.UnitType = unit
 	instanced_unit.global_position = tile_position_to_global_position(location)
 	$UnitContainer.add_child(instanced_unit)
+	grid_array.push_back(instanced_unit)
 	
 
 func _input(event: InputEvent) -> void:
