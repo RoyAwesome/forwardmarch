@@ -9,6 +9,7 @@ script = ExtResource("1_q4orc")
 [node name="MainSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_55kjo")
+centered = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
