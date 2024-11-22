@@ -125,6 +125,6 @@ func view_board(board : Board) -> void:
 
 func _on_button_grid_ability_wants_run(ability: BaseAbility, _button: AbilityButton) -> void:
 	#lower the panel
-	%ButtonGrid.visible = false
+	%BoardButton.button_pressed = true
 	#run the ability
 	get_current_player().Abilities.run_ability(ability)
