@@ -30,7 +30,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Battlefield" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("3_t3gjf")]
@@ -241,25 +241,29 @@ offset_right = 642.0
 offset_bottom = 448.0
 size_flags_horizontal = 3
 
-[node name="MarchLeftIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="MarchLeftIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
+[node name="TextureRect" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer2/MarchLeftIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 texture = ExtResource("7_osf8b")
 
-[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
+[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer2/MarchLeftIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 texture = ExtResource("7_osf8b")
 
-[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchLeftIndicator"]
+[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer2/MarchLeftIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -282,24 +286,29 @@ size_flags_horizontal = 0
 expand_mode = 2
 script = ExtResource("8_6msl2")
 
-[node name="MarchRightIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
+[node name="MarchRightIndicator" type="VBoxContainer" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer3/MarchRightIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("7_osf8b")
 flip_h = true
 
-[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
+[node name="TextureRect3" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer3/MarchRightIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("7_osf8b")
 flip_h = true
 
-[node name="TextureRect4" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarchRightIndicator"]
+[node name="TextureRect4" type="TextureRect" parent="BoardPanel/HBoxContainer/Container/HBoxContainer/MarginContainer3/MarchRightIndicator"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_vertical = 6

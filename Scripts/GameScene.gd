@@ -1,9 +1,9 @@
 class_name GameScene
 extends Node
 
-var UnitScene : PackedScene = preload("res://Scenes/UnitNode.tscn")
-var BoardScene : PackedScene = preload("res://Scenes/Board.tscn")
-var TestUnit : UnitResource = preload("res://Units/TestUnit.tres")
+const UnitScene : PackedScene = preload("res://Scenes/UnitNode.tscn")
+const BoardScene : PackedScene = preload("res://Scenes/Board.tscn")
+const TestUnit : UnitResource = preload("res://Units/TestUnit.tres")
 
 @onready var BoardPanel : PanelContainer = %BoardPanel
 @onready var BattlefieldNode : Battlefield = $UI/SubViewportContainer/SubViewport/Battlefield
@@ -119,6 +119,9 @@ func view_board(board : Board) -> void:
 	if(!board.is_node_ready()):
 		return
 	%BoardView.CurrentlyViewedBoard = board
+	var left_visible := board.OwningForce.OwningTeam and board.OwningForce.OwningTeam.MarchDirection == Team.UnitDirection.LEFT
+	%MarchLeftIndicator.visible = left_visible
+	%MarchRightIndicator.visible = !left_visible
 
 func _on_button_grid_ability_wants_run(ability: BaseAbility, _button: AbilityButton) -> void:
 	#lower the panel
