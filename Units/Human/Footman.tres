@@ -66,12 +66,12 @@ GrowthPerLevel = -1.0
 
 [sub_resource type="Resource" id="Resource_vkesm"]
 script = ExtResource("1_8o6qu")
-InitialValue = 0
+InitialValue = -1.0
 GrowthPerLevel = -1.0
 
 [sub_resource type="Resource" id="Resource_0ybtb"]
 script = ExtResource("1_8o6qu")
-InitialValue = 10
+InitialValue = 10.0
 GrowthPerLevel = -1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0lho"]

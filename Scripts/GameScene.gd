@@ -36,6 +36,11 @@ func _ready() -> void:
 		PlayersIn2.push_back(create_player_force(i + 3))
 	Team1 = Team.new(PlayersIn1, Team.UnitDirection.RIGHT, 0)
 	Team2 = Team.new(PlayersIn2, Team.UnitDirection.LEFT, 1)
+	for p in PlayersIn1:
+		p.OwningTeam = Team1
+	for p in PlayersIn2:
+		p.OwningTeam = Team2
+	
 	for i in 3:
 		WaveQueue.push_back(Wave.new(Team1.Forces[i % Team1.Forces.size()], Team2.Forces[i % Team2.Forces.size()]))	
 	

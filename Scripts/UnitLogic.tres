@@ -1,0 +1,69 @@
+[gd_resource type="BehaviorTree" load_steps=19 format=3 uid="uid://cj1xr3wa1x7wk"]
+
+[ext_resource type="Script" path="res://Scripts/AI/SelectForwardLocation.gd" id="1_56rvq"]
+[ext_resource type="Script" path="res://Scripts/AI/MoveToTarget.gd" id="1_el36r"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_wd8tp"]
+var/move_target/name = &"move_target"
+var/move_target/type = 6
+var/move_target/value = Vector2i(0, 0)
+var/move_target/hint = 0
+var/move_target/hint_string = ""
+
+[sub_resource type="BTFail" id="BTFail_78yd5"]
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_5i4v1"]
+custom_name = "Acquire Target"
+children = [SubResource("BTFail_78yd5")]
+
+[sub_resource type="BTComment" id="BTComment_i1kml"]
+custom_name = "Search unit for possible abilities to run based on priority.  If we find an ability, move into range for it.  "
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_nx7ne"]
+
+[sub_resource type="BTSelector" id="BTSelector_rp1pv"]
+custom_name = "MoveToTarget"
+children = [SubResource("BTAlwaysSucceed_nx7ne")]
+
+[sub_resource type="BTComment" id="BTComment_86rdg"]
+custom_name = "Determine the ability to use"
+
+[sub_resource type="BTSelector" id="BTSelector_1sv5w"]
+custom_name = "TryToUseAbility"
+children = [SubResource("BTComment_86rdg")]
+
+[sub_resource type="BTSelector" id="BTSelector_1epnr"]
+custom_name = "EngageCombat"
+children = [SubResource("BTComment_i1kml"), SubResource("BTSelector_rp1pv"), SubResource("BTSelector_1sv5w")]
+
+[sub_resource type="BTSequence" id="BTSequence_3iwc4"]
+custom_name = "TryAttackTarget"
+children = [SubResource("BTDynamicSequence_5i4v1"), SubResource("BTSelector_1epnr")]
+
+[sub_resource type="BTAction" id="BTAction_aosnu"]
+script = ExtResource("1_56rvq")
+_move_target = &"move_target"
+
+[sub_resource type="BBNode" id="BBNode_pkoat"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_uweyr"]
+animation_player = SubResource("BBNode_pkoat")
+animation_name = &"walk"
+
+[sub_resource type="BTAction" id="BTAction_5fwwa"]
+script = ExtResource("1_el36r")
+_move_target = &"move_target"
+tolerance = null
+
+[sub_resource type="BTSequence" id="BTSequence_j2kgg"]
+custom_name = "Move Forward"
+children = [SubResource("BTAction_aosnu"), SubResource("BTPlayAnimation_uweyr"), SubResource("BTAction_5fwwa")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_udjyl"]
+children = [SubResource("BTSequence_3iwc4"), SubResource("BTSequence_j2kgg")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_wd8tp")
+root_task = SubResource("BTDynamicSelector_udjyl")

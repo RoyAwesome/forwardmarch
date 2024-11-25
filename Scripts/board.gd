@@ -32,6 +32,7 @@ func place_unit_at_location(unit : UnitResource, location: Vector2i):
 	var unit_scene := load("res://Scenes/UnitNode.tscn")
 	var instanced_unit := unit_scene.instantiate() as UnitNode
 	instanced_unit.UnitType = unit
+	instanced_unit.OwningForce = OwningForce
 	instanced_unit.global_position = tile_position_to_global_position(location)
 	$UnitContainer.add_child(instanced_unit)
 	grid_array.push_back(instanced_unit)

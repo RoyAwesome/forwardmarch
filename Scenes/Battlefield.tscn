@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_g8in1"]
 [ext_resource type="TileSet" uid="uid://ch87f8m2g5iww" path="res://Tiles/LPCTerrain.tres" id="1_nlrx0"]
-[ext_resource type="Texture2D" uid="uid://bi5n1g2qurff2" path="res://icon.svg" id="2_yac5f"]
+[ext_resource type="Texture2D" uid="uid://cuu6yrww0owvs" path="res://icon.svg" id="2_yac5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uut10"]
 size = Vector2(511, 766)

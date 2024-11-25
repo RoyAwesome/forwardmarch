@@ -40,6 +40,10 @@ action_cancel={
 ]
 }
 
+[limbo_ai]
+
+behavior_tree/user_task_dir_2="res://Scripts/AI/"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

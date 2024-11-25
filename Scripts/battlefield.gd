@@ -8,12 +8,12 @@ const GridSize := Vector2i(16, 24)
 const GridSizeMinusOne := GridSize - Vector2i.ONE #used in bounds checking
 const TileSizeInPixels := 32
 
-func global_position_to_tile_position(pos : Vector2) -> Vector2i:
+static func global_position_to_tile_position(pos : Vector2) -> Vector2i:
 	return Vector2i((pos / TileSizeInPixels))
-func tile_position_to_global_position(pos : Vector2i) -> Vector2:
+static func tile_position_to_global_position(pos : Vector2i) -> Vector2:
 	return (pos * TileSizeInPixels)
 	
-var UnitScene : PackedScene = preload("res://Scenes/UnitNode.tscn")
+const UnitScene : PackedScene = preload("res://Scenes/UnitNode.tscn")
 
 func _physics_process(_delta: float) -> void:
 	var mov :int = 0
@@ -37,11 +37,13 @@ func create_wave(force : Force, wave : int):
 	var board : Board = force.OwningBoard
 	var spawn_area : Area2D = spawn_zones[force.OwningTeam.TeamIndex]
 	var spawn_offset := global_position_to_tile_position(spawn_area.global_position)
+	var test_scene = load("res://Scenes/UnitNode.tscn")
 	
 	for unit in board.grid_array:
-		var duplicated_unit := UnitScene.instantiate() as UnitNode
+		var duplicated_unit := test_scene.instantiate() as UnitNode
 		duplicated_unit.UnitTemplate = unit
 		var board_location = board.global_position_to_tile_position(unit.global_position)
 		var battlefield_location = tile_position_to_global_position(board_location) + tile_position_to_global_position(spawn_offset)
 		duplicated_unit.global_position = battlefield_location
+		duplicated_unit.enable_ai = true
 		WaveNode.add_child(duplicated_unit)
