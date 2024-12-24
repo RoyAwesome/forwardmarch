@@ -72,6 +72,7 @@ MaxAttackDamage = SubResource("Resource_8rmeu")
 AttackClass = 3
 Name = ""
 Description = ""
+AI_Priority = 0
 ManaCost = SubResource("Resource_wq16j")
 DisplayMode = 2
 

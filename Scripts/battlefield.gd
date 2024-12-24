@@ -46,4 +46,15 @@ func create_wave(force : Force, wave : int):
 		var battlefield_location = tile_position_to_global_position(board_location) + tile_position_to_global_position(spawn_offset)
 		duplicated_unit.global_position = battlefield_location
 		duplicated_unit.enable_ai = true
+		duplicated_unit.OnBattlefield = self
 		WaveNode.add_child(duplicated_unit)
+
+func get_units_around_location(grid_location : Vector2i, range : int) -> Array[UnitNode]:
+	if range == 0: return []
+	var units : Array[UnitNode]
+	var nodes := $WaveContainer.get_children()
+	for wave in nodes:
+		for maybe_unit in wave.get_children():
+			if maybe_unit is UnitNode:
+				units.push_back(maybe_unit as UnitNode)
+	return units

@@ -30,7 +30,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Battlefield" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("3_t3gjf")]

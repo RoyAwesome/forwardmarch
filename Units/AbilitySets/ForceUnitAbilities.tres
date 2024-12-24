@@ -22,6 +22,7 @@ UnitType = ExtResource("3_ns0ww")
 Name = "Build Footman"
 Description = ""
 Icon = SubResource("AtlasTexture_7bmrg")
+AI_Priority = 0
 ManaCost = SubResource("Resource_hyc6i")
 DisplayMode = 0
 

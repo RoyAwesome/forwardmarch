@@ -59,7 +59,6 @@ region = Rect2(256, 192, 64, 64)
 
 [sub_resource type="Resource" id="Resource_h40ut"]
 script = ExtResource("4_gfhe0")
-AttackRange = SubResource("Resource_biwpt")
 NumTargets = SubResource("Resource_gtcqb")
 AreaOfEffect = SubResource("Resource_h4ajv")
 ProjectileSpeed = SubResource("Resource_g42lt")
@@ -69,9 +68,14 @@ AttackSpeed = SubResource("Resource_h0ca7")
 BaseAttackCooldown = SubResource("Resource_bcywa")
 MinAttackDamage = SubResource("Resource_rj6gg")
 MaxAttackDamage = SubResource("Resource_313a1")
+AttackWindupAnimation = null
+AttackWindDownAnimation = null
 AttackClass = 2
+AttackRange = SubResource("Resource_biwpt")
 Name = ""
 Description = ""
+AI_Priority = 0
+TargetFlags = null
 ManaCost = SubResource("Resource_rc08f")
 DisplayMode = 2
 
@@ -123,3 +127,4 @@ UnitName = "Dragon Hawk"
 Description = "Dragon Hawks are flying units that can grapple.  Upgrades: Aereal Shackles, Animal War Training
 "
 AbilitySets = Array[ExtResource("5_n6rld")]([ExtResource("2_8px5q"), SubResource("Resource_jk5fy")])
+IsEnemyWhenUnowned = null

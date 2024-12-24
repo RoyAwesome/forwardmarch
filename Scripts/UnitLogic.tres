@@ -1,7 +1,8 @@
-[gd_resource type="BehaviorTree" load_steps=19 format=3 uid="uid://cj1xr3wa1x7wk"]
+[gd_resource type="BehaviorTree" load_steps=21 format=3 uid="uid://cj1xr3wa1x7wk"]
 
 [ext_resource type="Script" path="res://Scripts/AI/SelectForwardLocation.gd" id="1_56rvq"]
 [ext_resource type="Script" path="res://Scripts/AI/MoveToTarget.gd" id="1_el36r"]
+[ext_resource type="Script" path="res://Scripts/AI/SelectAbilityAndTarget.gd" id="1_p2h45"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_wd8tp"]
 var/move_target/name = &"move_target"
@@ -9,12 +10,17 @@ var/move_target/type = 6
 var/move_target/value = Vector2i(0, 0)
 var/move_target/hint = 0
 var/move_target/hint_string = ""
+var/desired_ability/name = &"desired_ability"
+var/desired_ability/type = 24
+var/desired_ability/hint = 0
+var/desired_ability/hint_string = ""
 
-[sub_resource type="BTFail" id="BTFail_78yd5"]
+[sub_resource type="BTComment" id="BTComment_g3esf"]
+custom_name = "Try to acquire an ability.  if we do, run the ability"
 
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_5i4v1"]
-custom_name = "Acquire Target"
-children = [SubResource("BTFail_78yd5")]
+[sub_resource type="BTAction" id="BTAction_qgakc"]
+script = ExtResource("1_p2h45")
+_ability_to_use = &"desired_ability"
 
 [sub_resource type="BTComment" id="BTComment_i1kml"]
 custom_name = "Search unit for possible abilities to run based on priority.  If we find an ability, move into range for it.  "
@@ -32,13 +38,15 @@ custom_name = "Determine the ability to use"
 custom_name = "TryToUseAbility"
 children = [SubResource("BTComment_86rdg")]
 
+[sub_resource type="BTAlwaysFail" id="BTAlwaysFail_pilhq"]
+
 [sub_resource type="BTSelector" id="BTSelector_1epnr"]
 custom_name = "EngageCombat"
-children = [SubResource("BTComment_i1kml"), SubResource("BTSelector_rp1pv"), SubResource("BTSelector_1sv5w")]
+children = [SubResource("BTComment_i1kml"), SubResource("BTSelector_rp1pv"), SubResource("BTSelector_1sv5w"), SubResource("BTAlwaysFail_pilhq")]
 
 [sub_resource type="BTSequence" id="BTSequence_3iwc4"]
-custom_name = "TryAttackTarget"
-children = [SubResource("BTDynamicSequence_5i4v1"), SubResource("BTSelector_1epnr")]
+custom_name = "TryToUseAbility"
+children = [SubResource("BTComment_g3esf"), SubResource("BTAction_qgakc"), SubResource("BTSelector_1epnr")]
 
 [sub_resource type="BTAction" id="BTAction_aosnu"]
 script = ExtResource("1_56rvq")
@@ -55,7 +63,7 @@ animation_name = &"walk"
 [sub_resource type="BTAction" id="BTAction_5fwwa"]
 script = ExtResource("1_el36r")
 _move_target = &"move_target"
-tolerance = null
+tolerance = 10
 
 [sub_resource type="BTSequence" id="BTSequence_j2kgg"]
 custom_name = "Move Forward"

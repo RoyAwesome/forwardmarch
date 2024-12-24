@@ -38,3 +38,5 @@ enum ArmorType {
 @export var Hero : HeroData
 
 @export var AbilitySets : Array[AbilitySet]
+
+@export var IsEnemyWhenUnowned : bool = true

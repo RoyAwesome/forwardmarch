@@ -72,6 +72,7 @@ MaxAttackDamage = SubResource("Resource_lw34h")
 AttackClass = 4
 Name = ""
 Description = ""
+AI_Priority = 0
 ManaCost = SubResource("Resource_f7dp4")
 DisplayMode = 0
 
@@ -139,6 +140,7 @@ MaxAttackDamage = SubResource("Resource_uyuuv")
 AttackClass = 2
 Name = ""
 Description = ""
+AI_Priority = 0
 ManaCost = SubResource("Resource_uccg8")
 DisplayMode = 0
 
