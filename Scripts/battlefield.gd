@@ -30,16 +30,17 @@ func create_wave(force : Force, wave : int):
 		$Team1SpawnZone,
 		$Team2SpawnZone
 	]
-	var WaveNode = Node2D.new()
-	WaveNode.name = "Wave %d Force %d" % [wave, force.PlayerID]
-	$WaveContainer.add_child(WaveNode)
+	var WaveName := "Wave %d Force %d" % [wave, force.PlayerID]
+	var UnitsToSpawn : Array[UnitNode] = []
 	
 	var board : Board = force.OwningBoard
 	var spawn_area : Area2D = spawn_zones[force.OwningTeam.TeamIndex]
 	var spawn_offset := global_position_to_tile_position(spawn_area.global_position)
 	var test_scene = load("res://Scenes/UnitNode.tscn")
 	
-	for unit in board.grid_array:
+	UnitsToSpawn.resize(board.grid_array.size())
+	for i in board.grid_array.size():
+		var unit := board.grid_array[i]
 		var duplicated_unit := test_scene.instantiate() as UnitNode
 		duplicated_unit.UnitTemplate = unit
 		var board_location = board.global_position_to_tile_position(unit.global_position)
@@ -47,7 +48,16 @@ func create_wave(force : Force, wave : int):
 		duplicated_unit.global_position = battlefield_location
 		duplicated_unit.enable_ai = true
 		duplicated_unit.OnBattlefield = self
-		WaveNode.add_child(duplicated_unit)
+		UnitsToSpawn[i] = duplicated_unit
+	
+	print("%s spawning %d units" % [WaveName, UnitsToSpawn.size()])
+	
+	if UnitsToSpawn.size() > 0:
+		var WaveNode = Node2D.new()
+		WaveNode.name = WaveName
+		for unit in UnitsToSpawn:
+			WaveNode.add_child(unit)
+		$WaveContainer.add_child(WaveNode)
 
 func get_units_around_location(grid_location : Vector2i, range : int) -> Array[UnitNode]:
 	if range == 0: return []
@@ -56,5 +66,7 @@ func get_units_around_location(grid_location : Vector2i, range : int) -> Array[U
 	for wave in nodes:
 		for maybe_unit in wave.get_children():
 			if maybe_unit is UnitNode:
-				units.push_back(maybe_unit as UnitNode)
+				var unit := maybe_unit as UnitNode
+				if grid_location.distance_squared_to(unit.grid_position) <= range * range:
+					units.push_back(maybe_unit as UnitNode)
 	return units

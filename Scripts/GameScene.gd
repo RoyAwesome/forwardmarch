@@ -29,18 +29,14 @@ func _ready() -> void:
 	TeamDisplays = [%Team1Display, %Team2Display]
 	
 	# generate a force for each player
-	var PlayersIn1 : Array[Force]
-	var PlayersIn2 : Array[Force]
-	for i in 3:
-		PlayersIn1.push_back(create_player_force(i))
-		PlayersIn2.push_back(create_player_force(i + 3))
-	Team1 = Team.new(PlayersIn1, Team.UnitDirection.RIGHT, 0)
-	Team2 = Team.new(PlayersIn2, Team.UnitDirection.LEFT, 1)
-	for p in PlayersIn1:
-		p.OwningTeam = Team1
-	for p in PlayersIn2:
-		p.OwningTeam = Team2
-	
+	AllForces.resize(6)
+	for i in 6:
+		var force := create_player_force(i)
+		AllForces[i] = force
+		
+	Team1 = Team.new([AllForces[0], AllForces[1], AllForces[2]], Team.UnitDirection.RIGHT, 0)
+	Team2 = Team.new([AllForces[3], AllForces[4], AllForces[5]], Team.UnitDirection.LEFT, 1)
+
 	for i in 3:
 		WaveQueue.push_back(Wave.new(Team1.Forces[i % Team1.Forces.size()], Team2.Forces[i % Team2.Forces.size()]))	
 	
@@ -52,13 +48,13 @@ func _ready() -> void:
 	AllForces[LocalPlayer].OwningBoard.ready.connect(func (): 
 		view_board(AllForces[LocalPlayer].OwningBoard))
 	
+	# put an enemy footman on the board for testing
+	var footman : UnitResource = load("res://Units/Human/Footman.tres")
+	AllForces[3].OwningBoard.place_unit_at_location(footman, Vector2i(2, 3))
+	
 
 func create_player_force(player_id : int) -> Force:
 	var force : Force = Force.new(player_id, null)	
-	if player_id > AllForces.size():
-		AllForces.resize(player_id)
-	AllForces.insert(player_id, force)
-	
 
 	# create a board for the player
 	var viewport = SubViewport.new()
@@ -111,6 +107,7 @@ func _on_wave_timer_timeout() -> void:
 	var active_wave : Wave = WaveQueue.pop_front()
 	# Spawn the wave
 	BattlefieldNode.create_wave(active_wave.ForceLeft, CurrentWave)
+	BattlefieldNode.create_wave(active_wave.ForceRight, CurrentWave)
 	
 	# Generate the next wave
 	var NewWave : Wave = Wave.new(Team1.Forces[CurrentWave % Team1.Forces.size()], Team2.Forces[CurrentWave % Team2.Forces.size()])
